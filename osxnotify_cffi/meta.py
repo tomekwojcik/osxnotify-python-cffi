@@ -19,4 +19,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from .osxnotify_cffi import notify
+__title__ = 'osxnotify-cffi'
+__version__ = '1.0'
+__author__ = u'Tomek Wójcik'
+__license__ = 'MIT'
+__copyright__ = u'Copyright (c) 2015 Tomek Wójcik <tomek@bthlabs.pl>'

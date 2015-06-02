@@ -19,18 +19,43 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-
+import codecs
 from setuptools import setup
+import sys
+
+desc_file = codecs.open('README.rst', 'r', 'utf-8')
+long_description = desc_file.read()
+desc_file.close()
+
+meta = {}
+with open('osxnotify_cffi/meta.py', 'r') as f:
+    exec(compile(f.read(), 'osxnotify_cffi/meta.py', 'exec'), meta)
 
 setup(
-    name='osxnotify-cffi',
-    version='1.0',
+    name=meta['__title__'].encode('utf-8'),
+    version=meta['__version__'],
     description=(
         'No nonsense OS X notifications for Python scripts (CFFI wrapper)'
     ),
-    author=u'Tomek Wójcik',
+    long_description=long_description,
+    author=meta['__author__'].encode('utf-8'),
     author_email='tomek@bthlabs.pl',
     packages=['osxnotify_cffi'],
     install_requires=['cffi>=1.0.0'],
-    license='MIT'
+    license=meta['__license__'].encode('utf-8'),
+    url='https://github.com/tomekwojcik/osxnotify-python-cffi',
+    download_url=(
+        'http://github.com/tomekwojcik/osxnotify-python-cffi/tarball/v%s' %
+        meta['__version__']
+    ),
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Environment :: MacOS X :: Cocoa",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: MacOS :: MacOS X",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.4",
+        "Topic :: Software Development :: Libraries :: Python Modules"
+    ]
 )
